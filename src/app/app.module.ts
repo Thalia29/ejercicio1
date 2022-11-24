@@ -11,6 +11,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SidebarComponent } from './static/sidebar/sidebar.component';
 import { BreadcrumbsComponent } from './static/breadcrumbs/breadcrumbs.component';
+import { CatalogueComponent } from './pages/catalogue/catalogue.component';
+import { ProductComponent } from './pages/product/product.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { BreadcrumbsComponent } from './static/breadcrumbs/breadcrumbs.component
     LoginComponent,
     NotFoundComponent,
     SidebarComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    CatalogueComponent,
+    ProductComponent,
+    ContactComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
