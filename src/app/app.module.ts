@@ -1,41 +1,38 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { PagesModule } from './pages/pages.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
-import { HeaderComponent } from './static/header/header.component';
-import { FooterComponent } from './static/footer/footer.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { LoginComponent } from './auth/login/login.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { SidebarComponent } from './static/sidebar/sidebar.component';
-import { BreadcrumbsComponent } from './static/breadcrumbs/breadcrumbs.component';
-import { CatalogueComponent } from './pages/catalogue/catalogue.component';
-import { ProductComponent } from './pages/product/product.component';
-import { ContactComponent } from './pages/contact/contact.component';
 import { PagesComponent } from './pages/pages.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthModule } from './auth/auth.module';
+import { StaticModule } from './static/static.module';
+import { StaticComponent } from './static/static.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AboutComponent,
-    HeaderComponent,
-    FooterComponent,
-    DashboardComponent,
-    LoginComponent,
+    PagesComponent,
+    AuthComponent,
+    StaticComponent,
     NotFoundComponent,
-    SidebarComponent,
-    BreadcrumbsComponent,
-    CatalogueComponent,
-    ProductComponent,
-    ContactComponent,
-    PagesComponent
+  
+
+
+
   ],
+  //imports siempre van los modulos
   imports: [
     BrowserModule,
-    AppRoutingModule
+    PagesModule,
+    AuthModule,
+   
+    
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
