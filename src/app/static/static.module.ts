@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { StaticComponent } from './static.component';
+import { PagesModule } from '../pages/pages.module';
 
 
 
@@ -13,18 +15,18 @@ import { StaticComponent } from './static.component';
     BreadcrumbsComponent,
     FooterComponent,
     HeaderComponent,
+    NavComponent,
     SidebarComponent,
-    StaticComponent
   ],
-  exports: [
+  exports:[
     BreadcrumbsComponent,
     FooterComponent,
     HeaderComponent,
+    NavComponent,
     SidebarComponent,
-    StaticComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class StaticModule { }
