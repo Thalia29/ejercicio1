@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ProductModel } from 'src/app/modules/product.modul';
+import { ProductHttpService } from 'src/app/services/product-http.service';
 
 @Component({
   selector: 'app-product',
@@ -8,73 +9,62 @@ import { HttpClient } from '@angular/common/http';
 })
 //ngoninit se ejecuta luego del constructor
 export class ProductComponent implements OnInit {
+  products:ProductModel[] = [];
+
   //httpclient es una clase hacer las peticiones
-  constructor(private httpClient: HttpClient) {}//Inyeccion de dependencia
+  constructor(private productHttpService: ProductHttpService) {} //Inyeccion de dependencia
 
   ngOnInit(): void {
     //this.getProduct();
-    //this.getProducts();
+    this.getProducts();
     //this.createProduct();
     //this.updateProduct();
-    this.deleteProduct();
+    //this.deleteProduct();
   }
+  //getAll me devuelve un observable
   getProducts() {
-   this.httpClient
-      .get('https://api.escuelajs.co/api/v1/products').subscribe(
-        response => {                    //funcion flecha o landa
-        console.log(response);
-      });
+    return this.productHttpService.getAll().subscribe((response) => {
+      this.products = response;
+      //console.log(response);
+    });
   }
-//subscribe lista de espera va llegar la respuesta
-//Observable trae la informacion
+  //subscribe lista de espera va llegar la respuesta
+  //Observable trae la informacion
+
   getProduct() {
-    this.httpClient
-      .get('https://api.escuelajs.co/api/v1/products/18')
-      .subscribe(response => {
-        console.log(response);
-      });
+    return this.productHttpService.getOne(6).subscribe((response) => {
+      console.log(response);
+    });
   }
   createProduct() {
-    const data = {
-      title:'esfero',
-      price: 45,
-      description: 'utiles escolares',
-      category: 1,
-      images: ['https://api.lorem.space/image/shoes?w=640&h=480&r=8318'],
-    };
-    const url = 'https://api.escuelajs.co/api/v1/products/18';
-    this.httpClient.post(url, data).subscribe(
-      response => {
+    const data ={
+      id: 2,
+      title: "zapato",
+      description:"zapato grande",
+      price: 23,
+      categoryId:2,
+      images:["https://api.lorem.space/image/fashion?w=640&h=480&r=3268"]
+
+    }
+    return this.productHttpService.store(data).subscribe((response) => {
       console.log(response);
     });
   }
 
   updateProduct() {
-    const data = {
-      title: 'lapiz',
-      price: 60,
-      description: 'calzado-Jennifer Guzñay',
-      category: 2,
-      images: ['https://api.lorem.space/image/shoes?w=640&h=480&r=8318'],
-    };
-    const url = 'https://api.escuelajs.co/api/v1/products/18';
-
-    this.httpClient.put(url, data).subscribe(
-      response => {
+    const data ={
+      id: 2,
+      title: "zapato",
+      description:"zapato grande",
+    }
+    return this.productHttpService.update(data, 8).subscribe((response) => {
       console.log(response);
     });
-
   }
-  deleteProduct(){
-    const url = 'https://api.escuelajs.co/api/v1/products/18';
-
-    this.httpClient.delete(url).subscribe(
-      response => {
+  deleteProduct() {
+    return this.productHttpService.destroy(6).subscribe((response) => {
       console.log(response);
-    }
-    );
-
+    });
   }
-
 }
-
+//del component llama los metodos al servicio
