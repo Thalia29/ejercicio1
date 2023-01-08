@@ -61,10 +61,12 @@ export class ProductComponent implements OnInit {
       console.log(response);
     });
   }
-  deleteProduct() {
-    return this.productHttpService.destroy(6).subscribe((response) => {
-      console.log(response);
-    });
+  deleteProduct(id: ProductModel ['id']) {
+     this.productHttpService.destroy(id).subscribe( response => {
+      this.products = this.products.filter(product =>product.id != id)
+      //console.log(response);
+    }
+    )
   }
 }
 //del component llama los metodos al servicio
