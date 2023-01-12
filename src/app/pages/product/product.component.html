@@ -45,48 +45,66 @@
     {{product.category}} 
   </li>
  </ul> -->
+
+ 
  <div class="container">
-  <h1> Productos </h1>
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th >Titulo</th>
-      <th >Precio</th>
-      <th >Descripcion</th>
-      <th >Categoria</th>
-      <th >Imagen</th>
-      <th>Eliminar</th>
-      <th>Editar</th>
+
+    <div class="mb-3">
+        <label for="input1" class="form-label">Producto</label>
+        <input type="text" class="form-control" id="title" value="{{selectProduct.title}}">
+      </div>
+      <div class="mb-3">
+        <label for="input1" class="form-label">Precio</label>
+        <input type="text" class="form-control" id="title" value="{{selectProduct.price}}">
+      </div>
+      <div class="mb-3">
+        <label for="input1" class="form-label">Descripcion </label>
+        <input type="text" class="form-control" id="title" value="{{selectProduct.description}}">
+      </div>
       
-
-   
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let product of products" class="">
-      <td>{{product.title}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.description}}</td>
-      <td>{{product.category}}</td>
-      <td><img src="{{product.images}}" alt="100" height="100"></td>
-      <td><a href=""(click)="deleteProduct(product.id)">Eliminar</a></td>
-    </tr>
-    <tr>
+    <hr>
+    <h1> Productos </h1>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th >Titulo</th>
+        <th >Precio</th>
+        <th >Descripcion</th>
+        <th >Categoria</th>
+        <th >Imagen</th>
+        <th>Eliminar</th>
+        <th>Editar</th>
+        
+  
      
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table> 
-</div>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let product of products" class="">
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.category}}</td>
+        <td><img src="{{product.images}}" alt="100" height="100"></td>
+        <td><a href=""(click)="deleteProduct(product.id)">Eliminar</a></td>
+        <td><a href=""(click)="editProduct(product)">Editar</a></td>
+      </tr>
+      <tr>
+       
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table> 
+  </div>
